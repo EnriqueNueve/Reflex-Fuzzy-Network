@@ -3,7 +3,7 @@
 One Paragraph of project description goes here
 
 ### Prerequisites
-Python3
+Python3: numpy, pandas, sklearn
 
 ### Installing
 ```
