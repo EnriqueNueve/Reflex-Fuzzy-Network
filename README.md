@@ -12,14 +12,13 @@ Python3: numpy, pandas, sklearn
 
 ## Running the tests
 
-### Import Iris data and split
+### Import Iris data, split, and scale
 
 The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with 
 the shape of (sample,features). The labels of the training samples and test samples, Y, need the class labels 
 to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array.
 
 ```
-    # --- Import Iris data and split --- #
     data = pd.read_csv('iris_data_norm.csv')
     data = data.iloc[:,1:]
     X = data.iloc[:,:-1]
@@ -32,9 +31,16 @@ to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of
     y_train, y_test = y_train.values, y_test.values
     X_train, X_test = X_train.T, X_test.T
     
-'''
+```
 
-'''
+
+### Declare network
+
+The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with 
+the shape of (sample,features). The labels of the training samples and test samples, Y, need the class labels 
+to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array.
+
+```
 
     # --- Declare network --- #
     nn = ReflexFuzzyNeuroNetwork(gamma=2, theta=.1)
