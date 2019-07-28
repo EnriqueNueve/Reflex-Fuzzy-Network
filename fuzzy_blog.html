@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<!--
+
+<pre><code>
+i = 0;
+while (!deck.isInOrder()) {
+print 'Iteration ' + i;
+deck.shuffle();
+i++;
+}
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+</section>
+
+
+
+
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Enrique Nueve Blog</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<section id="header">
+		<header>
+			<span class="image avatar"><img src="images/me_pic.jpg" alt="" /></span>
+			<h1 id="logo"><a href="index.html">Enrique Nueve</a></h1>
+			<p>Undergraduate Statistics Major and Machine Learning Researcher.<br />
+				Aspring Quantitative Analyst.</p>
+		</header>
+		<nav id="nav">
+			<ul>
+				<li><a href="index.html" class="active">Home</a></li>
+
+			</ul>
+		</nav>
+		<footer>
+			<ul class="icons">
+				<li><a href="https://github.com/RealestRick-C137" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				<li><a href="https://www.linkedin.com/in/enrique-nueve-7a050115b/" class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
+			</ul>
+		</footer>
+	</section>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- One -->
+			<section id="one">
+				<div class="image main" data-position="center">
+					<img src="images/chicago_banner.jpg" alt="" />
+				</div>
+				<div class="container">
+					<header class="major">
+						<h2> *IN PROGRESS* </h2>
+						<h2>Python implementation of the paper "A General Reflex Fuzzy Min-Max Neural Network."</h2>
+						<p> July 2019 </p>
+					</header>
+
+					<h5> Intro</h5>
+					<p> &emsp; A common issue that arises in creating models is deciding between high accuracy and low interpretability or high
+						interpretability and low accuracy. This issue becomes even cloudier when the data doesn't fully represent the events
+						that are being modeled. Due to the lack of information provided in the data, a compromise that allows for the continual
+						use of the data is weakening the restrictions of the accepted outputs of the model. A modern implementation of this type
+						of model is a Bayesian Neural Network. This model has weights that consist of two trainable parameters that represent mean
+						and variance. This allows the model to output a range of possible outcomes. Although Bayesian Networks and Bayesian Deep
+						Learning overall is currently growing, there exist another family of models that allow for high levels of interpretability.
+						These models are called Fuzzy Networks.
+					</p>
+
+					<h5> Fuzzy Networks</h5>
+					<p> &emsp; Fuzzy Networks are based around the theorems of fuzzy sets.
+						Fuzzy sets were made by Lotfi A. Zadeh and Dieter Klaua in 1965. A fuzzy set consists of a set and a membership function
+						which states how much an element(data-sample) is part of that particular fuzzy set. These ideas of fuzzy sets were further
+						developed by Zadeh into the ideas of fuzzy logic. Unlike classical logic, fuzzy logic allows for continuous-intervals of truth.
+						The continuous truth intervals allow for an element to be given a non-binary value from zero to one rating how much that element
+						is part of a particular fuzzy set. Fuzzy sets also have very clean geometric properties allowing for easy visual interpretation on
+						how a particular element relates to a certain fuzzy set. Through the rules of fuzzy logic, Fuzzy Networks were inspired.
+					</p>
+
+					<figure>
+						<img src="images/boxes_plot_example.png" class="image fit" alt="Hyperbox diagram" />
+						<figcaption> Hyperbox Example: Red corners are min and max parameter of the hyperboxes. </figcaption>
+					</figure>
+
+					<p></p>
+					<p> &emsp; Fuzzy networks are usually classification models however, there are variants that do regression. In this post, I will
+						be covering Fuzzy Networks that do classification. Furthermore, Fuzzy Networks are supervised, learning models. The data set
+						consists of training examples with labeled targets of two or more different classes. Fuzzy Networks create trainable sets based around fuzzy sets called hyperboxes.
+						Hyperboxes consists of two parameters, a min, and a max, that define a lower and upper corner of a rectangular area. Although
+						I am describing the hyperboxes having a rectangular area based on the min and max parameters, this is only for the sake of conceptual explanation.
+						Hyperbox min and max parameters can be vectors larges than two dimensions. Two dimensions simply allow for a convenient visual explanation for the system.
+						All the principles of the Fuzzy Network apply to N-dimension data samples. Hyperboxes also have a membership function that states how much an element is part
+						of that particular hyperbox based on its distance from the defined hyperboxe's area.
+					</p>
+
+					<figure>
+						<img src="images/MemberShipFunction.jpg" class="image fit" alt="Membership Function" />
+						<figcaption> Membership Function: a~data-sampel, V~min-parameter, W~max-parameter [1]. </figcaption>
+					</figure>
+					<p></p>
+
+					<p> The membership function takes in several variables. The function takes the min~V and max~V parameter of the
+						hyperbox. It takes in a tuning parameter gamma (gamma values vary from one to four on average)
+						which adjust the sensitivity of the distance measurement. The membership function has a composed function within it, a ramp function, which sets a tested elements
+						membership value to one of the element falls directly within its area.
+					</p>
+
+					<figure>
+						<img src="images/ramp_function.png" class="image fit" alt="Ramp Function" />
+						<figcaption> Ramp Function [1]. </figcaption>
+					</figure>
+					<p></p>
+
+					<p>
+						Finally, beyond the membership function, the hyperbox has a tag saying which class it is associated with. Fuzzy Networks, during their training
+						period, have two stages: expansion and contraction.
+					</p>
+
+
+					<p></p>
+					<p> &emsp; During the expansion phase, hyperboxes are created or expanded by connecting to other hyperboxes. When a data sample
+						is introduced during the expansion phase two outcomes can happen. One, a new hyperbox could be formed. This occurs when no
+						hyperboxes meet expansion criteria (refer to the paper for further detail), thus a new hyperbox of the respective labeled class is created.
+						This implies whenever a data sample from a class is introduced for the first time, a hyperbox with the tag of that respective class will always
+						be made. The min and max parameters will be a vector equivalent to the training sample's values. It is necessary that your input data be scaled between zero and one.
+						Initially, min and max parameters are equal to each other, although this set is called a hyperbox, it initially, geometrically appears as a point.
+						The second event that can occur during the expansion phase is expansion itself.
+					</p>
+
+					<figure>
+						<img src="images/overlap_boxes.png" class="image fit" alt="Overlap boxes" />
+						<figcaption> Overlap of boxes after expansion phase and before contraction phase. </figcaption>
+					</figure>
+
+
+					<p></p>
+					<p> &emsp; If two points meet the expansion criteria, then two hyperboxes join together to form one large hyperbox with min and max parameters
+						based on the min[min-parameter] and max[max-parameter] of the two sets. Expansion can only occur if the class of the two hyperboxes are the same.
+						The second part of the training phase, contraction, occurs if the hyperbox that was just expanded now overlaps an already existing hyperbox of different classes.
+						Based off of different cases in how the boxes overlap, the overlapping boxes
+						get assigned new min and max parameter, causing the boxes to be no longer overlapping.
+					</p>
+
+					<p> &emsp; After the training period in which hyperboxes are made, for the different data classes presented
+						in the training data, the model is now ready to predict test data. When the model is shown a test sample,
+						the membership value is calculated for every hyperbox that was created. Of these calculated
+						memebership values, the max membership values from any particular defined class are considered the prediction.
+					</p>
+
+					</p>
+					&emsp; This is traditionally how Fuzzy Networks work, however, in the paper "A General Reflex Fuzzy Min-Max Neural Network"
+					by Abhijeet V. Nandedkar and Prabir Kumar Biswas, the idea of a Fuzzy Network was built further to create
+					a new network called the General Reflex Fuzzy Min-Max Neural Network [1].
+					</p>
+
+
+					<figure>
+						<img src="images/contraction_example.png" class="image fit" alt="Contraction boxes" />
+						<figcaption> Boxes after contaction. </figcaption>
+					</figure>
+
+					<p></p>
+					<h5> General Reflex Fuzzy Min-Max Neural Network </h5>
+					<p> &emsp; The General Reflex Fuzzy Min-Max Neural Network, GRFMMN, is unique in the way in which
+						it adds two new types of hyperboxes that help break ties between samples that are closely categorized.
+						In total there are three types of hyperboxes in the GRFMMN: classifying,
+						overlap compensation, and containment compensation hyperboxes. The classifying
+						hyperbox is the same hyperbox in the standard Fuzzy Network, so I will be discussing
+						the two unique hyperboxes in the GFRMMN which are the overlap compensation neuron (OCN) and the containment compensation neuron (CCN).
+					</p>
+
+					<figure>
+						<img src="images/FuzzyNetwork.jpg" class="image fit" alt="Reflex Fuzzy Network Diagram" />
+						<figcaption> Reflex Fuzzy Network Diagram [1]. </figcaption>
+					</figure>
+
+					<p></p>
+					<p> &emsp; The overlap compensation neuron is created during the contraction phase of the Fuzzy Network's training.
+						When the network contracts two overlapping hyperboxes, a new hyperbox, the overlap compensation neuron, is formed
+						with the min and max values being assigned to the overlapping rectangular area of the two initial hyperboxes.
+					</p>
+
+					<figure>
+						<img src="images/OCN.jpg" class="image fit" alt="OCN comparison" />
+						<figcaption> Before and after contraction and addition of OCN. </figcaption>
+					</figure>
+
+					<p></p>
+					<p> &emsp; Like the standard hyperbox, the OCN has its own unique membership function expressing how much an element is
+						part of that particular hyperbox. The unique thing about the OCN is that it belongs to both classes that were overlapping.
+						Although trivial-sounding, when there are more than two classes, this additional tie-breaker can
+						be beneficial.
+					</p>
+
+					<figure>
+						<img src="images/CCN_example.jpg" class="image fit" alt="CCN comparison" />
+						<figcaption> Before and after contraction and addition of CCN. </figcaption>
+					</figure>
+
+					<p></p>
+					<p> &emsp; After the training period in which the CLN, OCN, and CCN hyperboxes are made, the network is ready to
+						predict on test samples. Like the standard Fuzzy Network, the membership value is calculated in respect to each CLN
+						and the max values in respect to each class are the accepted output, however, the prediction also takes into account
+						the outputs of the OCN and CCN hyperboxes. The min value of each class from the OCN and CCN hyperbox outputs are considered
+						as their predictions. These values, respective to each class, are then added to the values outputed from the CLN hyperboxes
+						and the max value of the combined outputs is considered the network's prediction.
+					</p>
+
+
+					<figure>
+						<img src="images/reflex_output_3.png" class="image fit" alt="Reflex output" />
+						<figcaption> Output of Reflex Section. </figcaption>
+					</figure>
+
+					<p></p>
+					<h5> Thoughts about the network </h5>
+					<p> &emsp; So is the GRFMMN my new go-to network for my modeling needs? Sadly, that
+						is not the case. The performance of the network at its time of release was very competitive,
+						but with the growth of Deep Learning, this older model just can't keep up.
+						I tried it on a variety of data sets and found some weaknesses in its abilities.
+						I noticed that this network underperforms in imbalanced data sets. I also noticed
+						that the test time is rather lengthy for its performance. The code certainly can be
+						optimized for faster performance yet, even with increased speeds, I don't see the payoff
+						for the limited performance in testing. At this time, the field of fuzzy logic isn't making huge strides yet, time will tell.
+					</p>
+
+
+					<p></p>
+					<h5> Conclusion</h5>
+					<p> &emsp; Although this post covered the conceptual principles of the General Reflex Fuzzy Min-Max Neural Network, I highly recommend
+						reading the paper this implementation is based on
+						<a href="http://www.engineeringletters.com/issues_v14/issue_1/EL_14_1_29.pdf"> (CLICK HERE TO BE REDIRECTED TO THE PAPER)</a>
+						. By no means is all the mathematics of the GRFMMN covered in this post, in the paper, there are twenty-one listed formuals that compose this network! However,
+						if you want to apply this network or tinker with it, the code for this build can be found on my GitHub page by clicking
+						<a href="https://github.com/RealestRick-C137/ReflexFuzzyNetworkImplementation"> HERE. </a>
+						The code is MIT licensed so feel free to use it as you wish. The code is implemented with primarily numpy and is very module in its design allowing for easy tuning and alterations.
+					</p>
+
+					<p>
+						<h5> Citations </h5>
+						[1] Nandedkar A.V., Biswas P.K. (2005) A General Fuzzy Min Max Neural Network with Compensatory Neuron Architecture.
+						In: Khosla R., Howlett R.J., Jain L.C. (eds) Knowledge-Based Intelligent Information and Engineering Systems.
+						KES 2005. Lecture Notes in Computer Science, vol 3683. Springer, Berlin, Heidelberg
+					</p>
+
+
+				</div>
+			</section>
+
+
+
+
+		</div>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class="container">
+				<ul class="copyright">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
