@@ -1,6 +1,8 @@
 # Python implementation of the paper "A General Reflex Fuzzy Min-Max Neural Network."
+This repository is a python3 implementation of the paper "A General Reflex Fuzzy Min-Max Neural Network" 
+by Nandedkar A.V., Biswas P.K. The model, General Reflex Fuzzy Min-Max Neural Network, is a classifying fuzzy
+model. Due to its unique design of having two extra hyperbox variants, an overlapping compensation neuron, and a containment compensation neuron, this fuzzy network has been shown to perform better than traditional fuzzy networks with only classifying neuron hyperboxes. 
 
-One Paragraph of project description goes here
 
 ### Prerequisites
 Python3: numpy, pandas, sklearn
@@ -14,9 +16,7 @@ Python3: numpy, pandas, sklearn
 
 ### Import Iris data, split, and scale
 
-The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with 
-the shape of (sample,features). The labels of the training samples and test samples, Y, need the class labels 
-to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array. The values of X need to be scalled to the interval of (0,1).
+The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with the shape of (sample, features). The labels of the training samples and test samples, Y, need the class labels to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array. The values of X need to be scaled to the interval of (0,1).
 
 ```
     # --- Import Iris data, split, and scale --- #
@@ -34,10 +34,7 @@ to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of
 ```
 
 ### Declare network
-
-The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with 
-the shape of (sample,features). The labels of the training samples and test samples, Y, need the class labels 
-to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array.
+To use the network, it needs to be declared by calling the class "ReflexFuzzyNeuroNetwork" from the file GRFMMN.py. Two tuning parameters are passed during the declaration, gamma, and theta. Gamma serves as a tuning factor for the sensitivity of the membership function and theta serves a tuning factor for the expansion criteria. Ranges for these values most often fall within [2,4] for gamma and [.1,1] for theta.
 
 ```
     # --- Declare network --- #
@@ -45,10 +42,9 @@ to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of
 ```
 
 ### Train and Test Network
-
-The network is tested with the Iris data set. The training samples and test samples, X, need to be a numpy array with 
-the shape of (sample,features). The labels of the training samples and test samples, Y, need the class labels 
-to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of a numpy array.
+The X inputs and Y labels need to be separated into two separate date sets, a training and test set. The X-values
+are the first passed parameter for "train" and "test" functions and, the y-values are the second parameter passed for the 
+"train" and "test" functions. 
 
 ```
     # --- Train network --- #
@@ -56,6 +52,11 @@ to be assigned to natural numbers (1, 2, 3, 4, .....) and also be in the form of
 
     # --- Test Network --- #
     nn.test(X_test,y_test)
+```
+
+The test function will print out the accuracy of the model for predicting the test set.
+```
+Accuracy: 98.0% 
 ```
 
 
