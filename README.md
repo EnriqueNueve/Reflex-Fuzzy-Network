@@ -1,7 +1,7 @@
 # Python implementation of the paper "A General Reflex Fuzzy Min-Max Neural Network."
 This repository is a python3 implementation of the paper "A General Reflex Fuzzy Min-Max Neural Network" 
 by Nandedkar A.V., Biswas P.K. The model, General Reflex Fuzzy Min-Max Neural Network, is a classifying fuzzy
-model. Due to its unique design of having two extra hyperbox variants, an overlapping compensation neuron, and a containment compensation neuron, this fuzzy network has been shown to perform better than traditional fuzzy networks with only classifying neuron hyperboxes. 
+model. Due to its unique design of having two extra hyperbox variants, an overlapping compensation neuron, and a containment compensation neuron, this fuzzy network has been shown to outpeform traditional fuzzy networks with only classifying neuron hyperboxes. 
 
 
 ### Prerequisites
