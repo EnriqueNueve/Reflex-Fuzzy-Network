@@ -34,7 +34,7 @@ The network is tested with the Iris data set. The training samples and test samp
 ```
 
 ### Declare network
-To use the network, it needs to be declared by calling the class "ReflexFuzzyNeuroNetwork" from the file GRFMMN.py. Two tuning parameters are passed during the declaration, gamma, and theta. Gamma serves as a tuning factor for the sensitivity of the membership function and theta serves a tuning factor for the expansion criteria. Ranges for these values most often fall within [2,4] for gamma and [.1,1] for theta.
+To use the network, it needs to be declared by calling the class "ReflexFuzzyNeuroNetwork" from the file GRMMFN.py. Two tuning parameters are passed during the declaration, gamma, and theta. Gamma serves as a tuning factor for the sensitivity of the membership function and theta serves a tuning factor for the expansion criteria. Ranges for these values most often fall within [2,4] for gamma and [.1,1] for theta.
 
 ```
     # --- Declare network --- #
